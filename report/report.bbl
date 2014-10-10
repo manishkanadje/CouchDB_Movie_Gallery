@@ -1,0 +1,21 @@
+\begin{thebibliography}{1}
+
+\bibitem{couchDB}
+CouchDB.
+\newblock Apache couchdb, Oct. 2014.
+
+\bibitem{Anderson:CouchDB}
+N.~S. J~Chris~Anderson, Jan~Lehnardt.
+\newblock {\em CouchDB: The Definative Guide}.
+\newblock O'Reilly Media, 1005 Gravenstein Highway North, Sebastopol, CA
+  95472., 2010.
+
+\bibitem{couchDBviews}
+N.~VanderWitt.
+\newblock Introduction to couchdb views, June 2013.
+
+\bibitem{wikiTypes}
+Wikipedia.
+\newblock Nosql, Oct. 2014.
+
+\end{thebibliography}
