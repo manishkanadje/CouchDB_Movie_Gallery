@@ -100,46 +100,93 @@ def searchDirector(director_name):
     #pdb.set_trace()
     counter = len(directorView[director_name].rows)
     for i in range(counter):
-        doc_id = directorView[director_name].rows[i].value
-        print movieGallery[doc_id]
-
+        doc_list = directorView[director_name].rows[i].value
+        for name in doc_list:
+            print(unicd.normalize("NFKD", name).encode('ascii', 'ignore'))
 
 # Inserts a movie entry in the database
 def insert(input):
+    #pdb.set_trace()
     flag = True
     try:
-        test = json.loads(input)
+        temp = json.loads(input)
     except ValueError, e:
         flag = False
     if (flag == True):
-        doc_id, doc_rev = movieGallery.save(input)
-        print "UUID of new record is :", doc_id
+        doc_id, doc_rev = movieGallery.save(temp)
+        print "UUID of new movie is :", doc_id
     else:
         print "Invalid input format. Input must be a JSON file."
 
-def inputOptions(input_id, query):
+def delete(movie_name):
+    titleView = movieGallery.view("_design/movieDesign/_view/title_view")
+    counter = len(titleView[movie_name].rows)
+    for i in range(counter):
+        #pdb.set_trace()
+        doc_id = titleView[movie_name].rows[i].value
+        doc = movieGallery[doc_id]
+        movieGallery.delete(doc)
+        print "Deleted the movie with title :", movie_name
+
+# Searches for movies created by same director using predefined view
+def searchDirector(director_name):
+    directorView = movieGallery.view("_design/movieDesign/_view/director_view")
+    #pdb.set_trace()
+    counter = len(directorView[director_name].rows)
+    for i in range(counter):
+        doc_list = directorView[director_name].rows[i].value
+        print director_name, " has directed following movies"
+        for name in doc_list:
+            print unicd.normalize('NFKD', name).encode('ascii', 'ignore')
+    
+
+def inputOptions(input_id):
     if (input_id == 1):
+        print "---------------------------------------------------"
+        print "Movie Name : ",
+        query = raw_input()
         searchMovie(query)
+        print "---------------------------------------------------"
     elif (input_id == 2):
+        print "---------------------------------------------------"
+        print "Director Name :",
+        query = raw_input()
         searchDirector(query)
+        print "---------------------------------------------------"
+    elif (input_id == 3):
+        print "---------------------------------------------------"
+        print 'JSON string containg new movie i.e. {"title":"foo"} :',
+        query = raw_input()
+        insert(query)
+        print "---------------------------------------------------"
+    elif (input_id == 4):
+        print "---------------------------------------------------"
+        print "Name of the movie to be deleted :",
+        query = raw_input()
+        delete(query)
+        print "---------------------------------------------------"
 
-
-
+def printActionSequence():
+    print "---------------------------------------------------"
+    print "Action Sequence Indices: "
+    print "Search Movie by Name 1"
+    print "List all movies of a director 2"
+    print "Insert a new movie in database 3"
+    print "Delete a movie fromt database 4"
+    print "---------------------------------------------------"
+        
 def movieGalleryApp():
     connectMovie()
     #pdb.set_trace()
     setupDatabase()
+    printActionSequence()
     print "Action Index:",
     input_id = input()
-    print "Input query:"
-    query = raw_input()
-    while (query != "0"):
-        inputOptions(input_id, query)
+    while (input_id != 0):
+        inputOptions(input_id)
         print "Action Index:",
         input_id = input()
-        print "Input query:"
-        query = raw_input()
-    #del movieGallery['movie_gallery']
+    del couch['movie_gallery']
 
 movieGalleryApp()
 
