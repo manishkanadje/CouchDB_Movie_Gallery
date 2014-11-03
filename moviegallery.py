@@ -34,6 +34,15 @@ def createDict(movie_id):
     movieDict['director'] = movie.crew[0].name
     return movieDict
 
+# Name of directors whose total budget is higher than given value
+def budgetDirectors(director):
+    map_fun = '''function(doc) { emit(doc.director, doc.budget);}'''
+    reduce_fun = '''function(key, value, reduce) { return sum(value);}'''
+    tempView = movieGallery.query(map_fun, reduce_fun)
+    result = tempView[director].rows[0].value
+    print "Total budget of director ", director, " is ", result
+    
+
 # Creates an initial CouchDB design document. Contains basic map function.
 def createDesign():
     viewMap = {}
@@ -165,6 +174,12 @@ def inputOptions(input_id):
         query = raw_input()
         delete(query)
         print "---------------------------------------------------"
+    elif (input_id == 5):
+        print "---------------------------------------------------"
+        print "Name of the director whose budget need to be found :",
+        query = raw_input()
+        budgetDirectors(query)
+        print "---------------------------------------------------"
 
 def printActionSequence():
     print "---------------------------------------------------"
@@ -173,6 +188,7 @@ def printActionSequence():
     print "List all movies of a director 2"
     print "Insert a new movie in database 3"
     print "Delete a movie fromt database 4"
+    print "Total budget of a director 5"
     print "---------------------------------------------------"
         
 def movieGalleryApp():
