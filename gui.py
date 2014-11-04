@@ -8,16 +8,16 @@ import Tkinter
 from Tkinter import *
 
 master = Tkinter.Tk()
-
-e = Entry(master)
+e = Entry(master, width = 80)
+#Label(master, text = "Query").grid(row = 0)
 e.pack()
-
+#e.grid(row = 0, column = 1)
 e.focus_set()
 
 
 # Creates a text field for displaying on-screen text
-displayPanel = Text(master)
-displayPanel.pack()
+displayPanel = Text(master, width = 50, bd = 10, bg = "beige")
+displayPanel.pack(side = LEFT)
 
 def callbackMovieSearch():
     text = e.get()
@@ -39,26 +39,26 @@ def callbackDirectorSearch():
 
 def callbackBudgetSearch():
     text = e.get()
-    result = mg.searchMovie(text)
+    result = mg.budgetDirectors(text)
     displayPanel.delete(1.0, Tkinter.END)
     displayPanel.insert(INSERT, result)
 
 
-movie = Button(master, text="Search Movie", width=10, command=callbackMovieSearch)
+movie = Button(master, text="Search Movie", width=20, command=callbackMovieSearch)
 movie.pack()
 
-director = Button(master, text="Search Director", width=10, 
+director = Button(master, text="Search Director", width=20, 
 command=callbackDirectorSearch)
 director.pack()
 
-budget = Button(master, text="Search Budget", width=10, command=callbackBudgetSearch)
+budget = Button(master, text="Search Budget", width=20, command=callbackBudgetSearch)
 budget.pack()
 
 
 mainloop()
-e = Entry(master, width=50)
-e.pack()
+#e = Entry(master, width=100)
+#e.pack()
 
-text = e.get()
+#text = e.get()
 
 
