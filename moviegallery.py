@@ -1,5 +1,5 @@
 # Created: Sun 26 Oct 2014 07:51:32 AM EDT
-# Modified: Tue 04 Nov 2014 12:06:06 PM EST
+# Modified: Tue 04 Nov 2014 03:49:23 PM EST
 #
 # Creates a CouchDB doucment. Put it into the database. Add movies from the 
 # The Movie Database. Create a view.
@@ -42,6 +42,7 @@ def budgetDirectors(director):
     tempView = movieGallery.query(map_fun, reduce_fun)
     result = tempView[director].rows[0].value
     print "Total budget of director ", director, " is ", result
+    return ("Total budget of director ", director, " is ", result)
     
 
 # Creates an initial CouchDB design document. Contains basic map function.
