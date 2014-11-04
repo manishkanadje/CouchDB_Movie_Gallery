@@ -1,5 +1,5 @@
 # Created: Tue 04 Nov 2014 09:32:50 AM EST
-# Modified: Tue 04 Nov 2014 11:16:05 AM EST
+# Modified: Tue 04 Nov 2014 12:03:22 PM EST
 #
 # Author:Manish Kanadje
 
@@ -22,6 +22,7 @@ displayPanel.pack()
 def callbackMovieSearch():
     text = e.get()
     result = mg.searchMovie(text)
+    result = mg.printMoviedetails(result)
     displayPanel.delete(1.0, Tkinter.END)
     displayPanel.insert(INSERT, result)
 
