@@ -1,5 +1,5 @@
 # Created: Sun 26 Oct 2014 07:51:32 AM EDT
-# Modified: Tue 04 Nov 2014 11:03:11 AM EST
+# Modified: Tue 04 Nov 2014 12:06:06 PM EST
 #
 # Creates a CouchDB doucment. Put it into the database. Add movies from the 
 # The Movie Database. Create a view.
@@ -103,7 +103,35 @@ def searchMovie(movie_name):
     for i in range(counter):
         doc_id = titleView[movie_name].rows[i].value
         print movieGallery[doc_id]
+        print printMoviedetails(movieGallery[doc_id])
         return movieGallery[doc_id]
+
+# Prints movie details in readable format
+def printMoviedetails(movie):
+    fields = movie.keys()
+    #pdb.set_trace()
+    answerString = ""
+    for key in fields:
+        temp = movie[key]
+        newKey =  unicd.normalize('NFKD', key).encode('ascii','ignore')
+        if (not(isinstance(temp, int) or isinstance(temp, list))):
+            newTemp = unicd.normalize('NFKD', temp).encode('ascii','ignore')
+        else:
+            newTemp = str(temp)
+        if (newKey == 'cast' or newKey == 'genres'):
+            answerString += newKey + " : " + getListDetails(temp)
+        else:
+            answerString += newKey+ " : " + newTemp + "\n"
+    #pdb.set_trace()
+    return answerString
+
+# Returns a string containing all the cast
+def getListDetails(inputList):
+    answer = ""
+    for entry in inputList:
+        answer += unicd.normalize('NFKD', entry).encode('ascii', 'ignore')
+        answer += "\n"
+    return answer
 
 
 # Searches for movies created by same director using predefined view
