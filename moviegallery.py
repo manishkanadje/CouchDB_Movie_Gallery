@@ -1,5 +1,5 @@
 # Created: Sun 26 Oct 2014 07:51:32 AM EDT
-# Modified: Sun 26 Oct 2014 03:12:45 PM EDT
+# Modified: Mon 03 Nov 2014 07:36:25 PM EST
 #
 # Creates a CouchDB doucment. Put it into the database. Add movies from the 
 # The Movie Database. Create a view.
@@ -206,8 +206,3 @@ def movieGalleryApp():
 
 movieGalleryApp()
 
-
-
-
-
-    
