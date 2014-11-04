@@ -1,5 +1,5 @@
 # Created: Sun 26 Oct 2014 07:51:32 AM EDT
-# Modified: Mon 03 Nov 2014 07:36:25 PM EST
+# Modified: Tue 04 Nov 2014 11:03:11 AM EST
 #
 # Creates a CouchDB doucment. Put it into the database. Add movies from the 
 # The Movie Database. Create a view.
@@ -15,7 +15,8 @@ import json
 designDocID = "_design/movieDesign"
 couch = couchdb.Server('http://127.0.0.1:5984')
 couch.config()["query_server_config"]["reduce_limit"] = "false"
-movieGallery = couch.create('movie_gallery')
+#movieGallery = couch.create('movie_gallery')
+movieGallery = couch['movie_gallery']
 
 
 # Creates a dictionary from data fetched from The Movie Database
@@ -102,6 +103,8 @@ def searchMovie(movie_name):
     for i in range(counter):
         doc_id = titleView[movie_name].rows[i].value
         print movieGallery[doc_id]
+        return movieGallery[doc_id]
+
 
 # Searches for movies created by same director using predefined view
 def searchDirector(director_name):
@@ -145,9 +148,12 @@ def searchDirector(director_name):
     for i in range(counter):
         doc_list = directorView[director_name].rows[i].value
         print director_name, " has directed following movies"
+        answerList = []
         for name in doc_list:
-            print unicd.normalize('NFKD', name).encode('ascii', 'ignore')
-    
+            tempAns = unicd.normalize('NFKD', name).encode('ascii', 'ignore')
+            answerList.append(tempAns)
+            print tempAns
+        return answerList
 
 def inputOptions(input_id):
     if (input_id == 1):
@@ -194,15 +200,17 @@ def printActionSequence():
 def movieGalleryApp():
     connectMovie()
     #pdb.set_trace()
-    setupDatabase()
+    #setupDatabase()
     printActionSequence()
     print "Action Index:",
     input_id = input()
+    '''
     while (input_id != 0):
         inputOptions(input_id)
         print "Action Index:",
         input_id = input()
-    del couch['movie_gallery']
+    '''
+    #del couch['movie_gallery']
 
 movieGalleryApp()
 
