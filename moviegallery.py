@@ -15,8 +15,10 @@ import json
 designDocID = "_design/movieDesign"
 couch = couchdb.Server('http://127.0.0.1:5984')
 couch.config()["query_server_config"]["reduce_limit"] = "false"
-#movieGallery = couch.create('movie_gallery')
-movieGallery = couch['movie_gallery']
+try:
+    movieGallery = couch['movie_gallery']
+except:
+    movieGallery = couch.create('movie_gallery')
 
 
 # Creates a dictionary from data fetched from The Movie Database
@@ -41,8 +43,9 @@ def budgetDirectors(director):
     reduce_fun = '''function(key, value, reduce) { return sum(value);}'''
     tempView = movieGallery.query(map_fun, reduce_fun)
     result = tempView[director].rows[0].value
-    print "Total budget of director ", director, " is ", result
-    return ("Total budget of director ", director, " is ", result)
+    answerString  =  "Total budget of director " + director + " is " + str(result)
+    print answerString
+    return answerString
     
 
 # Creates an initial CouchDB design document. Contains basic map function.
@@ -76,6 +79,11 @@ def connectMovie():
 # Creates database. Inserts design document. Creates a new CouchDB movie 
 # database with 100 movies
 def setupDatabase():
+    try:
+        del couch['movie_gallery']
+    except:
+        print "Database does not exists"
+    movieGallery = couch.create('movie_gallery')
     designDoc = createDesign()
     movieGallery[designDocID] = designDoc
     id = 500
@@ -159,7 +167,7 @@ def insert(input):
     else:
         print "Invalid input format. Input must be a JSON file."
 
-def delete(movie_name):
+def deleteMovie(movie_name):
     titleView = movieGallery.view("_design/movieDesign/_view/title_view")
     counter = len(titleView[movie_name].rows)
     for i in range(counter):
@@ -167,7 +175,9 @@ def delete(movie_name):
         doc_id = titleView[movie_name].rows[i].value
         doc = movieGallery[doc_id]
         movieGallery.delete(doc)
-        print "Deleted the movie with title :", movie_name
+        answerString = "Deleted the movie with title :" + movie_name
+        print answerString
+        return answerString
 
 # Searches for movies created by same director using predefined view
 def searchDirector(director_name):
@@ -231,8 +241,8 @@ def movieGalleryApp():
     #pdb.set_trace()
     #setupDatabase()
     printActionSequence()
-    print "Action Index:",
-    input_id = input()
+    #print "Action Index:",
+    #input_id = input()
     '''
     while (input_id != 0):
         inputOptions(input_id)
