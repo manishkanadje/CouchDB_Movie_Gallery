@@ -1,5 +1,5 @@
 # Created: Tue 04 Nov 2014 09:32:50 AM EST
-# Modified: Sun 09 Nov 2014 09:23:27 AM EST
+# Modified: Sun 09 Nov 2014 09:35:42 AM EST
 #
 # Author:Manish Kanadje
 
@@ -89,34 +89,38 @@ def insertMovie():
     global insertMaster
     insertMaster = Tkinter.Tk()
     text = e.get()
-    
+
+    headingLabel = createLabel("Insert or Update a Movie", insertMaster)
+    headingLabel.config(font = ('times', 20, 'bold'))
+    headingLabel.config(height = 3, width = 50)
+    headingLabel.grid(row = 0, column = 1)
     # Label and entry for title
     titleLabel = createLabel("Title", insertMaster)
-    titleLabel.grid(row = 0, column = 0)
+    titleLabel.grid(row = 1, column = 0)
     global titleEntry
     titleEntry = Entry(insertMaster, width = 20)
-    titleEntry.grid(row = 0, column = 1)
+    titleEntry.grid(row = 1, column = 1)
 
     # Label and entry for director
     directorLabel = createLabel("Director", insertMaster)
-    directorLabel.grid(row = 1, column = 0)
+    directorLabel.grid(row = 2, column = 0)
     global directorEntry
     directorEntry = Entry(insertMaster, width = 20)
-    directorEntry.grid(row = 1, column = 1)
+    directorEntry.grid(row = 2, column = 1)
 
     # Label and entry for cast
     castLabel = createLabel("Cast", insertMaster)
-    castLabel.grid(row = 2, column = 0)
+    castLabel.grid(row = 3, column = 0)
     global castEntry
     castEntry = Entry(insertMaster, width = 50)
-    castEntry.grid(row = 2, column = 1)
+    castEntry.grid(row = 3, column = 1)
 
     # Label and entry for budget
     budgetLabel = createLabel("Budget", insertMaster)
-    budgetLabel.grid(row = 3, column = 0)
+    budgetLabel.grid(row = 4, column = 0)
     global budgetEntry
     budgetEntry = Entry(insertMaster, width = 20)
-    budgetEntry.grid(row = 3, column = 1)
+    budgetEntry.grid(row = 4, column = 1)
 
 
     if (text != ""):
@@ -124,12 +128,12 @@ def insertMovie():
     # Add Button
     addButton = Button(insertMaster, text = "Add", width = 20, command = \
                        addEntry)
-    addButton.grid(row = 4, column = 0)
+    addButton.grid(row = 5, column = 0)
 
     # Update button
     updateButton = Button(insertMaster, text = "Update", width = 20, command = \
                             updateEntry)
-    updateButton.grid(row = 4, column = 1)
+    updateButton.grid(row = 5, column = 1)
 
 
 def callbackMovieSearch():
