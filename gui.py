@@ -1,11 +1,12 @@
 # Created: Tue 04 Nov 2014 09:32:50 AM EST
-# Modified: Tue 04 Nov 2014 12:03:22 PM EST
+# Modified: Sun 09 Nov 2014 09:23:27 AM EST
 #
 # Author:Manish Kanadje
 
 import moviegallery as mg
 import Tkinter
 from Tkinter import *
+import unicodedata as unicd
 
 
 master = Tkinter.Tk()
@@ -40,6 +41,7 @@ titleEntry = None
 directorEntry = None
 castEntry = None
 budgetEntry = None
+
 
 
 # Creates a text field for displaying on-screen text
@@ -86,7 +88,8 @@ def quitApplication():
 def insertMovie():
     global insertMaster
     insertMaster = Tkinter.Tk()
-
+    text = e.get()
+    
     # Label and entry for title
     titleLabel = createLabel("Title", insertMaster)
     titleLabel.grid(row = 0, column = 0)
@@ -115,11 +118,72 @@ def insertMovie():
     budgetEntry = Entry(insertMaster, width = 20)
     budgetEntry.grid(row = 3, column = 1)
 
+
+    if (text != ""):
+        updateFields(text)
     # Add Button
     addButton = Button(insertMaster, text = "Add", width = 20, command = \
                        addEntry)
     addButton.grid(row = 4, column = 0)
 
+    # Update button
+    updateButton = Button(insertMaster, text = "Update", width = 20, command = \
+                            updateEntry)
+    updateButton.grid(row = 4, column = 1)
+
+
+def callbackMovieSearch():
+    text = e.get()
+    result = mg.searchMovie(text)
+    result = mg.printMoviedetails(result)
+    displayPanel.delete(1.0, Tkinter.END)
+    displayPanel.insert(INSERT, result)
+
+def callbackDirectorSearch():
+    text = e.get()
+    resultList = mg.searchDirector(text)
+    displayPanel.delete(1.0, Tkinter.END)
+    ansString = text + " has directed following movies"
+    displayPanel.insert(Tkinter.END, ansString)
+    displayPanel.insert(Tkinter.END, "\n")
+    for result in resultList:
+        displayPanel.insert(Tkinter.END, result)
+        displayPanel.insert(Tkinter.END, "\n")
+
+def callbackBudgetSearch():
+    text = e.get()
+    result = mg.budgetDirectors(text)
+    displayPanel.delete(1.0, Tkinter.END)
+    displayPanel.insert(INSERT, result)
+
+def callbackData():
+    mg.setupDatabase()
+
+def callbackDeleteMovie():
+    text = e.get()
+    result = mg.deleteMovie(text)
+    displayPanel.delete(1.0, Tkinter.END)
+    displayPanel.insert(Tkinter.INSERT, result)
+
+def quitApplication():
+    global master
+    master.quit()
+
+
+def updateFields(movieName):
+    movie = mg.searchMovie(movieName)
+    titleEntry.insert(0, movie['title'])
+    directorEntry.insert(0, movie['director'])
+    budgetEntry.insert(0, movie['budget'])
+    castList = movie['cast']
+    castString = ""
+    for actor in castList:
+        castString += unicd.normalize('NFKD', actor).encode('ascii', 'ignore')
+        castString += ','
+    castEntry.insert(0, castString)
+
+
+    
 def addEntry():
     movieDict = {}
     movieDict['title'] = titleEntry.get()
@@ -133,6 +197,16 @@ def addEntry():
     displayPanel.delete(1.0, Tkinter.END)
     displayPanel.insert(INSERT, result)
     
+def updateEntry():
+    movie = mg.searchMovie(titleEntry.get())
+    movie['director'] = directorEntry.get()
+    movie['budget'] = int(budgetEntry.get())
+    castString = castEntry.get()
+    castList = castString.split(',')
+    movie['cast'] = castList
+    mg.movieGallery[movie['_id']] = movie
+    callbackMovieSearch()
+
 
 # Creates new label with given text
 def createLabel(inputText, canvas):
@@ -161,16 +235,21 @@ delMovie = Button(master, text = "Delete a Movie", width = 20, command = \
                   callbackDeleteMovie)
 delMovie.pack()
 
-insertButton = Button(master, text = "Insert Movie", width = 20, command = \
-                      insertMovie)
+insertButton = Button(master, text = "Insert or Update Movie", width = 20, \
+                        command = insertMovie)
 insertButton.pack()
+
+#updateButton = Button(master, text = "Update Movie", width = 20, command = \
+#                      updateMovieEntry)
+#updateButton.pack()
 
 quitButton = Button(master, text = "Quit", width = 20, command = \
                     quitApplication)
 quitButton.pack()
 
-projectInfo = createLabel("This project manages a movie \n database using CouchDB \n \n" \
-                           + "Manish Kanadje \n Isankumar Fulia \n Varun Basappa", master) 
+projectInfo = createLabel("This project manages a movie \n database using " \
+                          "CouchDB \n \n Manish Kanadje \n Isankumar Fulia \n" \
+                          + "Varun Basappa", master) 
 projectInfo.config(height = 0, width = 25)
 projectInfo.pack()
 
