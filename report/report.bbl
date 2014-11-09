@@ -10,6 +10,14 @@ N.~S. J~Chris~Anderson, Jan~Lehnardt.
 \newblock O'Reilly Media, 1005 Gravenstein Highway North, Sebastopol, CA
   95472., 2010.
 
+\bibitem{twit}
+J.-P. Mens.
+\newblock Update notifications in couchdb, Nov. 2014.
+
+\bibitem{swinger}
+A.~Quint.
+\newblock Swinger presentation, Nov. 2014.
+
 \bibitem{couchDBviews}
 N.~VanderWitt.
 \newblock Introduction to couchdb views, June 2013.

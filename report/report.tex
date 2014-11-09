@@ -30,11 +30,13 @@ Anonymous
 \label{overview}
 In this report, we will explore the details about the CouchDB system. In the recent years, the shear volume of generated data has increased significantly. While the volume of generated data is increasing rapidly, data storage has become cheaper. Organizations all over the world are storing as much data as they can. However, this data is collected at rapid rate. It has different structure. It not always possible to anticipated what would be the source of data in the near future. Data is collected from social networks, text messages, telephonic conversations and many other semi-structured or unstructured formats. It is very difficult to use the traditional data management techniques for managing this data. This rapid growth does not allow the time for understanding the structure of data, designing predefined schema and then processing the data. Most of this data has a short term usability. It is not feasible to invest large amount of resources for managing this kind of data.
 
-All these reasons are the driving forces behind the creation of NoSQL database systems. NoSQL database systems allows the storage and retrieval of data which is not present in tabular format. The traditional relational database systems always expect data to be modeled in tabular format. They are very powerful for managing that kind of data. However they required a lot of resources for designing the database and maintaining it. NoSQL databases stand for `Not only SQL'. They can have the query language support like the traditional relational database. However, they have the important characteristic of handling semi-structured or unstructured data without having to invest a large amount of time or financial resources.
+In this report, we will discuss about the Apache CouchDB database system. CouchDB is a document based NoSQL database system developed by The Apache Software Foundation~\cite{couchDB}. In this report, we will present a comprehensive review about the CouchDB system from the point of view of design, data storage, retrieval and query processing.
+
+\section{Relational Database vs NoSQL}
+\label{relational nosql}
+Section~\ref{overview} describes reasons which are driving forces behind the creation of NoSQL database systems. NoSQL database systems allows the storage and retrieval of data which is not present in tabular format. The traditional relational database systems always expect data to be modeled in tabular format. They are very powerful for managing that kind of data. However they required a lot of resources for designing the database and maintaining it. Relational databses usually require a databse administator for designing and maintaining the databse system. NoSQL databases stand for `Not only SQL'. They can have the query language support like the traditional relational database. However, they have the important characteristic of handling semi-structured or unstructured data without having to invest a large amount of time or financial resources.
 
 With the continuous increase in generation of data, many NoSQL database management systems have emerged in recent past. NoSQL database systems use various approaches for designing the system. Most of the NoSQL database systems designed as column based, document based, key-value based or gram based system~\cite{wikiTypes}.
-
-In this report, we will discuss about the Apache CouchDB database system. CouchDB is a document based NoSQL database system developed by The Apache Software Foundation~\cite{couchDB}. In this report, we will present a comprehensive review about the CouchDB system from the point of view of design, data storage, retrieval and query processing.
 
 \section{CouchDB Characteristics}
 \label{couchdb characteristics}
@@ -167,6 +169,17 @@ CouchDB stores all of its information in the form of JSON documents irrespective
 }
 \end{verbatim}
 The design document has a unique id which identifies the document. This unique id starts with `\_design' to indicate that this is a design document. As shown in the code it has views created by map function and reduce function.
+
+\section{Applications of CouchDB}
+\label{applications}
+This sections explains few applications which use CouchDB for their implementation. These applications use CouchDB because of several advantages offered by CouchDB.
+\subsection{CouchDB for Update Notification}
+\label{update notification}
+It is one of the first Real time application developed using CouchDB. In relational database system, updating any database sends the notifications after it finishes the update process. These updates are affected by some changes made by the user. But in CouchDB,  there are two features that sends alert when there is some updates done by the user. First feature is to  send notifications by external process i.e. it reads an update notification by console and sends notifications. second feature supports sending notifications using "Changes" database-API.  This API checks if there is any change or update done at particular instance. One of the application of this feature can be observed in tweeting application. If a tweet needs to be posted urgently, then embed the document with ``urgent'' tag that notifies our twitter account as soon as it is added to CouchDB~\cite{twit}.
+
+\subsection{Swinger}
+\label{swinger}
+Swinger~\cite{swinger} is a simple CouchDB application used to prepare and screen presentations online. This presentation slides can also be downloaded to system. The main application document is stored in CouchDB and query processing is done using javascript. Swinger  makes use of the CouchApp which is designed to support individual CouchDB applications that supports portability. CouchApp is a JQuery plugin that provides transparency for the CouchDB's document based approach.
 
 \section{Summary}
 \label{summary}

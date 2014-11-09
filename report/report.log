@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  10 OCT 2014 16:14
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  9 NOV 2014 07:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -306,12 +306,12 @@ B
  []
 
 
-Overfull \hbox (15.54854pt too wide) in paragraph at lines 41--42
+Overfull \hbox (15.54854pt too wide) in paragraph at lines 43--44
 []\T1/aer/m/n/9 CouchDB is a doc-u-ment based NoSQL database [2]. CouchDB
  []
 
 
-Overfull \hbox (13.88513pt too wide) in paragraph at lines 41--42
+Overfull \hbox (13.88513pt too wide) in paragraph at lines 43--44
 \T1/aer/m/n/9 han-dles the data which does not have tab-u-lar schema. CouchDB
  []
 
@@ -319,52 +319,48 @@ Overfull \hbox (13.88513pt too wide) in paragraph at lines 41--42
 
 
 ]
-Overfull \hbox (2.1403pt too wide) in paragraph at lines 47--48
+Overfull \hbox (2.1403pt too wide) in paragraph at lines 49--50
 \T1/aer/m/n/9 Each doc-u-ment rep-re-sents a real world en-tity in the database
 .
  []
 
 
-Overfull \hbox (13.26308pt too wide) in paragraph at lines 55--56
+Overfull \hbox (13.26308pt too wide) in paragraph at lines 57--58
 []\T1/aer/m/n/9 CouchDB uses MapRe-duce con-cept for pro-cess-ing the queries.
  []
 
 
-Overfull \hbox (11.77pt too wide) in paragraph at lines 70--71
+Overfull \hbox (11.77pt too wide) in paragraph at lines 72--73
 \T1/aer/m/n/9 man-ag-ing database ac-cess. Due to MVCC frame-work CouchDB
  []
 
-
-Underfull \vbox (badness 1558) has occurred while \output is active []
-
- [2]
-<create.jpg, id=16, 570.13pt x 448.67625pt>
+[2] <create.jpg, id=16, 570.13pt x 448.67625pt>
 File: create.jpg Graphic file (type jpg)
  <use create.jpg>
-Package pdftex.def Info: create.jpg used on input line 84.
+Package pdftex.def Info: create.jpg used on input line 86.
 (pdftex.def)             Requested size: 256.0748pt x 201.51906pt.
 
-Overfull \hbox (16.0748pt too wide) in paragraph at lines 84--85
+Overfull \hbox (16.0748pt too wide) in paragraph at lines 86--87
  [][] 
  []
 
 <document.jpg, id=17, 663.47874pt x 125.46875pt>
 File: document.jpg Graphic file (type jpg)
  <use document.jpg>
-Package pdftex.def Info: document.jpg used on input line 96.
+Package pdftex.def Info: document.jpg used on input line 98.
 (pdftex.def)             Requested size: 227.62204pt x 43.04553pt.
 
 <update.jpg, id=18, 584.1825pt x 191.71625pt>
 File: update.jpg Graphic file (type jpg)
  <use update.jpg>
-Package pdftex.def Info: update.jpg used on input line 112.
+Package pdftex.def Info: update.jpg used on input line 114.
 (pdftex.def)             Requested size: 227.62204pt x 74.70175pt.
  [3 <./create.jpg> <./document.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 125--126
+Underfull \hbox (badness 10000) in paragraph at lines 127--128
 
  []
 
-LaTeX Font Info:    Try loading font information for T1+aett on input line 126.
+LaTeX Font Info:    Try loading font information for T1+aett on input line 128.
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/ae/t1aett.fd
 File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
@@ -372,42 +368,57 @@ File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
 <map.jpg, id=24, 816.04875pt x 489.83pt>
 File: map.jpg Graphic file (type jpg)
  <use map.jpg>
-Package pdftex.def Info: map.jpg used on input line 136.
+Package pdftex.def Info: map.jpg used on input line 138.
 (pdftex.def)             Requested size: 227.62204pt x 136.62827pt.
 
 <reduce.jpg, id=25, 819.06pt x 305.14pt>
 File: reduce.jpg Graphic file (type jpg)
  <use reduce.jpg>
-Package pdftex.def Info: reduce.jpg used on input line 150.
+Package pdftex.def Info: reduce.jpg used on input line 152.
 (pdftex.def)             Requested size: 227.62204pt x 84.80072pt.
 
-Overfull \hbox (14.66006pt too wide) in paragraph at lines 168--168
+Overfull \hbox (14.66006pt too wide) in paragraph at lines 170--170
 []                                \T1/aett/m/n/9 {//do something else}"[] 
  []
 
-[4 <./update.jpg> <./map.jpg> <./reduce.jpg>] (./report.bbl) [5] (./report.aux)
- ) 
+[4 <./update.jpg> <./map.jpg> <./reduce.jpg>]
+Overfull \hbox (2.58147pt too wide) in paragraph at lines 175--176
+[]\T1/aer/m/n/9 This sec-tions ex-plains few ap-pli-ca-tions which use CouchDB
+ []
+
+
+Overfull \hbox (2.37357pt too wide) in paragraph at lines 182--183
+\T1/aer/m/n/9 pare and screen pre-sen-ta-tions on-line. This pre-sen-ta-tion sl
+ides
+ []
+
+(./report.bbl)
+
+Package balance Warning: You have called \balance in second column
+(balance)                Columns might not be balanced.
+
+[5] (./report.aux) ) 
 Here is how much of TeX's memory you used:
- 2998 strings out of 493315
- 38578 string characters out of 6137904
- 104847 words of memory out of 5000000
- 6359 multiletter control sequences out of 15000+600000
+ 3004 strings out of 493315
+ 38655 string characters out of 6137904
+ 104889 words of memory out of 5000000
+ 6365 multiletter control sequences out of 15000+600000
  47727 words of font info for 66 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 41i,11n,28p,1274b,246s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2013/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
-exlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/tex
-live/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texli
-ve/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/
-2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/201
-3/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2013/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2013/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2013/texm
-f-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2013/texmf-dist/
-fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/t
-ype1/urw/times/utmb8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/urw/t
-imes/utmr8a.pfb>
-Output written on report.pdf (5 pages, 546256 bytes).
+ 41i,11n,28p,1274b,261s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2013/texmf-dist/fonts/enc/dvips/base/8r
+.enc}</usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.p
+fb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb
+></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></
+usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr
+/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/l
+ocal/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/loc
+al/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/local
+/texlive/2013/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texliv
+e/2013/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2013/
+texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2013/texmf-dist
+/fonts/type1/urw/times/utmr8a.pfb>
+Output written on report.pdf (5 pages, 549219 bytes).
 PDF statistics:
  70 PDF objects out of 1000 (max. 8388607)
  46 compressed objects within 1 object stream
