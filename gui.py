@@ -7,12 +7,31 @@ import moviegallery as mg
 import Tkinter
 from Tkinter import *
 
+
 master = Tkinter.Tk()
+
+labelfont = ('times', 20, 'bold')
+labelWidget = Label(master, text = "Online Movie Gallery")
+labelWidget.config(bg='white', fg='black')  
+labelWidget.config(font=labelfont)           
+labelWidget.config(height=1, width=20)
+labelWidget.pack()
+
+
 e = Entry(master, width = 80)
-#Label(master, text = "Query").grid(row = 0)
-e.pack()
+
 #e.grid(row = 0, column = 1)
+#e.grid(row = 0, column = 1)
+e.pack()
 e.focus_set()
+
+
+labelfont = ('times', 20, 'bold')
+labelWidget = Label(master, text = "Query")
+labelWidget.config(bg='white', fg='black')  
+labelWidget.config(font=labelfont)           
+labelWidget.config(height=1, width=20)
+labelWidget.pack()
 
 
 # Internal insertion frame variable
@@ -142,18 +161,19 @@ delMovie = Button(master, text = "Delete a Movie", width = 20, command = \
                   callbackDeleteMovie)
 delMovie.pack()
 
-quitButton = Button(master, text = "Quit", width = 20, command = \
-                    quitApplication)
-quitButton.pack()
-
 insertButton = Button(master, text = "Insert Movie", width = 20, command = \
                       insertMovie)
 insertButton.pack()
 
-mainloop()
-#e = Entry(master, width=100)
-#e.pack()
+quitButton = Button(master, text = "Quit", width = 20, command = \
+                    quitApplication)
+quitButton.pack()
 
-#text = e.get()
+projectInfo = createLabel("This project manages a movie \n database using CouchDB \n \n" \
+                           + "Manish Kanadje \n Isankumar Fulia \n Varun Basappa", master) 
+projectInfo.config(height = 0, width = 25)
+projectInfo.pack()
+
+mainloop()
 
 
