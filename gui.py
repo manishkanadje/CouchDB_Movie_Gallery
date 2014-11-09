@@ -1,5 +1,5 @@
 # Created: Tue 04 Nov 2014 09:32:50 AM EST
-# Modified: Sun 09 Nov 2014 09:35:42 AM EST
+# Modified: Sun 09 Nov 2014 01:21:44 PM EST
 #
 # Author:Manish Kanadje
 
@@ -49,10 +49,10 @@ displayPanel = Text(master, width = 50, bd = 10, bg = "beige")
 displayPanel.pack(side = LEFT)
 
 def callbackMovieSearch():
+    displayPanel.delete(1.0, Tkinter.END)
     text = e.get()
     result = mg.searchMovie(text)
     result = mg.printMoviedetails(result)
-    displayPanel.delete(1.0, Tkinter.END)
     displayPanel.insert(INSERT, result)
 
 def callbackDirectorSearch():
@@ -123,8 +123,6 @@ def insertMovie():
     budgetEntry.grid(row = 4, column = 1)
 
 
-    if (text != ""):
-        updateFields(text)
     # Add Button
     addButton = Button(insertMaster, text = "Add", width = 20, command = \
                        addEntry)
@@ -134,6 +132,10 @@ def insertMovie():
     updateButton = Button(insertMaster, text = "Update", width = 20, command = \
                             updateEntry)
     updateButton.grid(row = 5, column = 1)
+
+    if (text != ""):
+        updateFields(text)
+ 
 
 
 def callbackMovieSearch():
