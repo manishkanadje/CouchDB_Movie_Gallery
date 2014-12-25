@@ -1,5 +1,5 @@
 # Created: Tue 04 Nov 2014 09:32:50 AM EST
-# Modified: Sun 09 Nov 2014 01:21:44 PM EST
+# Modified: Thu 25 Dec 2014 10:38:47 AM IST
 #
 # Author:Manish M Kanadje
 
@@ -256,7 +256,7 @@ quitButton.pack()
 
 projectInfo = createLabel("This project manages a movie \n database using " \
                           "CouchDB \n \n Manish Kanadje \n Isankumar Fulia \n" \
-                          + "Varun Basappa", master) 
+                          , master) 
 projectInfo.config(height = 0, width = 25)
 projectInfo.pack()
 
