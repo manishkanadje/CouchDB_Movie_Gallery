@@ -1,7 +1,7 @@
 # Created: Tue 04 Nov 2014 09:32:50 AM EST
 # Modified: Sun 09 Nov 2014 01:21:44 PM EST
 #
-# Author:Manish Kanadje
+# Author:Manish M Kanadje
 
 import moviegallery as mg
 import Tkinter
@@ -186,6 +186,7 @@ def updateFields(movieName):
     for actor in castList:
         castString += unicd.normalize('NFKD', actor).encode('ascii', 'ignore')
         castString += ','
+    castString = castString.rstrip(",")
     castEntry.insert(0, castString)
 
 
