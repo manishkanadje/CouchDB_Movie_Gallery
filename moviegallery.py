@@ -70,7 +70,8 @@ def createDesign():
 # Creates a connection with The Movie Database
 def connectMovie():
     # set API key
-    tmdb3.set_key('aeef209bc3d0782fbb28db3e310e8303')   
+    print "You need to get API key for the movie database"
+    tmdb3.set_key('')   
     # cache for maintaining fetch limit
     tmdb3.set_cache(filename = 'tmdb3.cache')
     # set locale information
